@@ -1,0 +1,4 @@
+resources:
+  - hello-nginx-deployment.yaml
+  - hello-nginx-service.yaml
+  - hello-nginx-ingress.yaml

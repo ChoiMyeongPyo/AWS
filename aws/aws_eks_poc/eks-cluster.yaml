@@ -1,0 +1,28 @@
+# 수정 후 eks-cluster.yaml (vpc 블록 제거)
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: sa-eks-cluster
+  region: ap-northeast-2
+
+managedNodeGroups:
+  - name: spot-nodes
+    instanceType: t3.medium
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 4
+    spot: true
+    volumeSize: 20
+    privateNetworking: true
+    iam:
+      withAddonPolicies:
+        albIngress: true
+        externalDNS: true
+        autoScaler: true
+    labels:
+      lifecycle: Ec2Spot
+    tags:
+      lifecycle: Ec2Spot
+      "k8s.io/cluster-autoscaler/enabled": "true"
+      "k8s.io/cluster-autoscaler/sa-eks-cluster": "owned"
