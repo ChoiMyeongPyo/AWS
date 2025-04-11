@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mp-app-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ChoiMyeongPyo/DevOps.git
+    targetRevision: main
+    path: aws/aws-eks-poc-helm/helm
+    helm:
+      valueFiles:
+        - dev-values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mp-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

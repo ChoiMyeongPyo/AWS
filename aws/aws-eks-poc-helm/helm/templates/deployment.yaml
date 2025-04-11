@@ -16,6 +16,8 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.containerPort | default 80 }}
           resources:
             limits:
               memory: {{ .Values.resources.limits.memory }}

@@ -1,7 +1,7 @@
 env: dev
 namespace: mp-dev
 image:
-  repository: nginx
+  repository: nginxdemos/hello
   tag: latest
 replicaCount: 2
 resources:
@@ -11,3 +11,4 @@ resources:
   requests:
     cpu: 250m
     memory: 256Mi
+containerPort: 80
