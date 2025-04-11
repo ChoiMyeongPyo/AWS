@@ -1,0 +1,13 @@
+env: dev
+namespace: mp-dev
+image:
+  repository: <ECR_REPO_URL>
+  tag: latest
+replicaCount: 2
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
